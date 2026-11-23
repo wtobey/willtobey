@@ -1,15 +1,15 @@
 # willtobey.com
 
-Personal landing page. Next.js (App Router) + TypeScript, no CSS framework.
+Personal landing page. Next.js (App Router) + TypeScript.
 
-A single terminal panel that loads forever: a braille spinner, a progress bar
-that fills and restarts on the next task, and a short log of finished lines.
-All of it lives in `app/terminal.tsx`; the palette and page ground are tokens
-at the top of `app/globals.css`.
+Two lines of monospace text on a black background, with a spinner that
+turns forever. The whole page is `app/terminal.tsx`; the type and colours
+are in `app/globals.css`. No CSS framework, no web font, no images.
 
 ```bash
 npm run dev    # http://localhost:3000
 npm run build  # production build
 ```
 
-The domain's apex A record points at Vercel.
+`vercel.json` declares the Next.js framework, because the Vercel project
+was created before this repo had any code in it.
