@@ -62,6 +62,14 @@ article > * + * {
   margin-block-start: 1.5em;
 }
 
+/* Photos never outgrow their column, and never upscale past their own
+   pixels, which keeps them sharp against a flat background. */
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
 h1 {
   font-size: inherit;
   font-weight: inherit;
