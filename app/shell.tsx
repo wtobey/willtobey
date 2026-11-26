@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Fragment, type ReactNode } from "react";
+import { WritingFooter } from "./footer";
 import { trail } from "./site";
 import { Tree } from "./tree";
 
@@ -26,6 +27,10 @@ export function Page({
   // name and need no back link, the breadcrumb being the way up already.
   const isEntry = crumbs.length > 2;
 
+  // A post closes with an invitation to write back. It hangs off the section
+  // rather than off each page, so a new post gets it by being in /writing and
+  // the arm table does not get it by not being.
+
   return (
     <main>
       <p>
@@ -41,6 +46,7 @@ export function Page({
         <article className="spacer">
           <h1>{here.label}</h1>
           {children}
+          {parent?.href === "/writing" ? <WritingFooter /> : null}
         </article>
       ) : (
         children
