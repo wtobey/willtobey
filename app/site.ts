@@ -24,6 +24,7 @@ export const SITE: TreeNode[] = [
   },
   {
     label: "contact",
+    href: "/contact",
     children: [
       { label: "wtobey1@gmail.com", href: "mailto:wtobey1@gmail.com" },
       {
