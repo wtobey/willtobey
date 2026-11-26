@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Tree } from "../../tree";
 
 export const metadata: Metadata = {
   title: "spaghetti all the way down",
@@ -32,10 +33,11 @@ export default function Post() {
           <p key={text.slice(0, 32)}>{text}</p>
         ))}
       </article>
-      <p className="spacer">
-        <span aria-hidden="true">{"└── "}</span>
-        <Link href="/">back</Link>
-      </p>
+      <Tree
+        label="Back"
+        className="spacer"
+        nodes={[{ label: "back", href: "/" }]}
+      />
     </main>
   );
 }
