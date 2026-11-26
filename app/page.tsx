@@ -1,13 +1,5 @@
 import Link from "next/link";
-
-// One entry per post. The tree branches are drawn from this list, so a new
-// post is one line here.
-const POSTS = [
-  {
-    slug: "spaghetti-all-the-way-down",
-    title: "spaghetti all the way down",
-  },
-];
+import { POSTS } from "./posts";
 
 export default function Home() {
   return (
@@ -16,7 +8,8 @@ export default function Home() {
       <nav aria-label="Writing" className="spacer">
         <ul>
           <li>
-            <span aria-hidden="true">{"├── "}</span>writing
+            <span aria-hidden="true">{"├── "}</span>
+            <Link href="/writing">writing</Link>
             <ul>
               {POSTS.map((post, i) => {
                 const last = i === POSTS.length - 1;

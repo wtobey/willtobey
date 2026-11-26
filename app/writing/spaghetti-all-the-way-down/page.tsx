@@ -22,7 +22,10 @@ const PARAGRAPHS = [
 export default function Post() {
   return (
     <main>
-      <p>willtobey.com / writing</p>
+      <p>
+        <Link href="/">willtobey.com</Link> /{" "}
+        <Link href="/writing">writing</Link>
+      </p>
       <article className="spacer">
         <h1>spaghetti all the way down</h1>
         {PARAGRAPHS.map((text) => (
