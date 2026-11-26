@@ -11,6 +11,12 @@ export const metadata: Metadata = {
 
 // Imported rather than referenced from /public, so the dimensions are known
 // at build time and the page reserves the space before the file arrives.
+// Served unoptimized. These sources are already small and already lossy, and
+// the optimizer only offers q=75, which re-encodes them from 4.8 bits/pixel
+// down to 0.8 and turns the fabric and the grain to mush. It would save about
+// 170 KB on a page that is otherwise a few kilobytes of text, on two images
+// that load lazily. Not a trade worth making. Drop this prop once there are
+// full-resolution originals for it to work from.
 const PHOTOS = [
   {
     src: overTheArm,
@@ -32,7 +38,7 @@ export default function ArmTable() {
       <article className="spacer">
         <h1>arm table</h1>
         {PHOTOS.map((photo) => (
-          <Image key={photo.alt} src={photo.src} alt={photo.alt} />
+          <Image key={photo.alt} src={photo.src} alt={photo.alt} unoptimized />
         ))}
       </article>
       <Tree
