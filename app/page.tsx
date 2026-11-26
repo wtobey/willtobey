@@ -1,79 +1,43 @@
-import Link from "next/link";
 import { POSTS } from "./posts";
 import { PROJECTS } from "./projects";
+import { Tree, type TreeNode } from "./tree";
+
+// The whole site, as one tree. Posts and projects come from their own
+// lists, so adding either never touches this file.
+const NODES: TreeNode[] = [
+  {
+    label: "writing",
+    href: "/writing",
+    children: POSTS.map((post) => ({
+      label: post.title,
+      href: `/writing/${post.slug}`,
+    })),
+  },
+  {
+    label: "woodworking",
+    href: "/woodworking",
+    children: PROJECTS.map((project) => ({
+      label: project.title,
+      href: `/woodworking/${project.slug}`,
+    })),
+  },
+  {
+    label: "contact",
+    children: [
+      { label: "wtobey1@gmail.com", href: "mailto:wtobey1@gmail.com" },
+      {
+        label: "linkedin",
+        href: "https://www.linkedin.com/in/william-tobey-a3b981167/",
+      },
+    ],
+  },
+];
 
 export default function Home() {
   return (
     <main>
       <p>willtobey.com</p>
-      <nav aria-label="Writing" className="spacer">
-        <ul>
-          <li>
-            <span aria-hidden="true">{"├── "}</span>
-            <Link href="/writing">writing</Link>
-            <ul>
-              {POSTS.map((post, i) => {
-                const last = i === POSTS.length - 1;
-                return (
-                  <li key={post.slug}>
-                    <span aria-hidden="true">
-                      {last ? "│   └── " : "│   ├── "}
-                    </span>
-                    <Link href={`/writing/${post.slug}`}>{post.title}</Link>
-                  </li>
-                );
-              })}
-            </ul>
-          </li>
-        </ul>
-      </nav>
-      <nav aria-label="Woodworking" className="spacer">
-        <ul>
-          <li>
-            <span aria-hidden="true">{"\u251c\u2500\u2500 "}</span>
-            <Link href="/woodworking">woodworking</Link>
-            {PROJECTS.length > 0 && (
-              <ul>
-                {PROJECTS.map((project, i) => {
-                  const last = i === PROJECTS.length - 1;
-                  return (
-                    <li key={project.slug}>
-                      <span aria-hidden="true">
-                        {last ? "\u2502   \u2514\u2500\u2500 " : "\u2502   \u251c\u2500\u2500 "}
-                      </span>
-                      <Link href={`/woodworking/${project.slug}`}>
-                        {project.title}
-                      </Link>
-                    </li>
-                  );
-                })}
-              </ul>
-            )}
-          </li>
-        </ul>
-      </nav>
-      <nav aria-label="Contact" className="spacer">
-        <ul>
-          <li>
-            <span aria-hidden="true">{"└── "}</span>contact
-            <ul>
-              <li>
-                <span aria-hidden="true">{"    ├── "}</span>
-                <a href="mailto:wtobey1@gmail.com">wtobey1@gmail.com</a>
-              </li>
-              <li>
-                <span aria-hidden="true">{"    └── "}</span>
-                <a
-                  href="https://www.linkedin.com/in/william-tobey-a3b981167/"
-                  rel="noreferrer"
-                >
-                  linkedin
-                </a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </nav>
+      <Tree label="Site" nodes={NODES} className="spacer branches" />
     </main>
   );
 }

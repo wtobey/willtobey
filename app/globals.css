@@ -32,6 +32,11 @@ ul {
   white-space: pre;
 }
 
+/* A blank line between a tree's top-level branches. */
+.branches > ul > li + li {
+  margin-block-start: 1.5em;
+}
+
 /* One blank terminal line. line-height is 1.5, so 1.5em is one row. */
 .spacer {
   margin-block-start: 1.5em;
