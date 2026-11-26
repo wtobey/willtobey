@@ -1,30 +1,23 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { PROJECTS } from "../projects";
+import { Page } from "../shell";
+import { entries } from "../site";
 import { Tree } from "../tree";
+
+const HERE = "/woodworking";
 
 export const metadata: Metadata = {
   title: "woodworking",
 };
 
 export default function Woodworking() {
+  const projects = entries(HERE);
   return (
-    <main>
-      <p>
-        <Link href="/">willtobey.com</Link> / woodworking
-      </p>
-      {PROJECTS.length === 0 ? (
+    <Page path={HERE}>
+      {projects.length === 0 ? (
         <p className="spacer">nothing here...yet</p>
       ) : (
-        <Tree
-          label="Projects"
-          className="spacer"
-          nodes={PROJECTS.map((project) => ({
-            label: project.title,
-            href: `/woodworking/${project.slug}`,
-          }))}
-        />
+        <Tree label="Projects" className="spacer" nodes={projects} />
       )}
-    </main>
+    </Page>
   );
 }

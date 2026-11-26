@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { Prose } from "../../prose";
-import { Tree } from "../../tree";
+import { Page } from "../../shell";
 
 export const metadata: Metadata = {
   title: "what i like about cad",
@@ -14,24 +13,12 @@ const PARAGRAPHS: string[] = [];
 
 export default function Post() {
   return (
-    <main>
-      <p>
-        <Link href="/">willtobey.com</Link> /{" "}
-        <Link href="/writing">writing</Link>
-      </p>
-      <article className="spacer">
-        <h1>what i like about cad</h1>
-        {PARAGRAPHS.map((text) => (
-          <p key={text.slice(0, 32)}>
-            <Prose text={text} />
-          </p>
-        ))}
-      </article>
-      <Tree
-        label="Back"
-        className="spacer"
-        nodes={[{ label: "back", href: "/writing" }]}
-      />
-    </main>
+    <Page path="/writing/what-i-like-about-cad">
+      {PARAGRAPHS.map((text) => (
+        <p key={text.slice(0, 32)}>
+          <Prose text={text} />
+        </p>
+      ))}
+    </Page>
   );
 }

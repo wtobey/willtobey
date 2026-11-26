@@ -7,7 +7,13 @@ import { Tree } from "./tree";
 // on an entry its heading. A page passes its own route and nothing else, so
 // the only thing it can get wrong is where it says it is, and saying that
 // wrong fails the build in trail().
-export function Page({ path, children }: { path: string; children: ReactNode }) {
+export function Page({
+  path,
+  children,
+}: {
+  path: string;
+  children: ReactNode;
+}) {
   const crumbs = trail(path);
   const here = crumbs[crumbs.length - 1];
   const above = crumbs.slice(0, -1);

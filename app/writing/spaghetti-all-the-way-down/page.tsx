@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { Prose } from "../../prose";
-import { Tree } from "../../tree";
+import { Page } from "../../shell";
 
 export const metadata: Metadata = {
   title: "spaghetti all the way down",
@@ -24,24 +23,12 @@ const PARAGRAPHS = [
 
 export default function Post() {
   return (
-    <main>
-      <p>
-        <Link href="/">willtobey.com</Link> /{" "}
-        <Link href="/writing">writing</Link>
-      </p>
-      <article className="spacer">
-        <h1>spaghetti all the way down</h1>
-        {PARAGRAPHS.map((text) => (
-          <p key={text.slice(0, 32)}>
-            <Prose text={text} />
-          </p>
-        ))}
-      </article>
-      <Tree
-        label="Back"
-        className="spacer"
-        nodes={[{ label: "back", href: "/" }]}
-      />
-    </main>
+    <Page path="/writing/spaghetti-all-the-way-down">
+      {PARAGRAPHS.map((text) => (
+        <p key={text.slice(0, 32)}>
+          <Prose text={text} />
+        </p>
+      ))}
+    </Page>
   );
 }

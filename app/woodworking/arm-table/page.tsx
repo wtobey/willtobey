@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
-import { Tree } from "../../tree";
 import fromTheFront from "./from-the-front.jpg";
 import overTheArm from "./over-the-arm.jpg";
+import { Page } from "../../shell";
 
 export const metadata: Metadata = {
   title: "arm table",
@@ -30,27 +29,10 @@ const PHOTOS = [
 
 export default function ArmTable() {
   return (
-    <main>
-      <p>
-        <Link href="/">willtobey.com</Link> /{" "}
-        <Link href="/woodworking">woodworking</Link>
-      </p>
-      <article className="spacer">
-        <h1>arm table</h1>
-        {PHOTOS.map((photo) => (
-          <Image
-            key={photo.alt}
-            src={photo.src}
-            alt={photo.alt}
-            sizes={COLUMN}
-          />
-        ))}
-      </article>
-      <Tree
-        label="Back"
-        className="spacer"
-        nodes={[{ label: "back", href: "/woodworking" }]}
-      />
-    </main>
+    <Page path="/woodworking/arm-table">
+      {PHOTOS.map((photo) => (
+        <Image key={photo.alt} src={photo.src} alt={photo.alt} sizes={COLUMN} />
+      ))}
+    </Page>
   );
 }

@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { POSTS } from "../posts";
+import { Page } from "../shell";
+import { entries } from "../site";
 import { Tree } from "../tree";
+
+const HERE = "/writing";
 
 export const metadata: Metadata = {
   title: "writing",
@@ -9,18 +11,8 @@ export const metadata: Metadata = {
 
 export default function Writing() {
   return (
-    <main>
-      <p>
-        <Link href="/">willtobey.com</Link> / writing
-      </p>
-      <Tree
-        label="Posts"
-        className="spacer"
-        nodes={POSTS.map((post) => ({
-          label: post.title,
-          href: `/writing/${post.slug}`,
-        }))}
-      />
-    </main>
+    <Page path={HERE}>
+      <Tree label="Posts" className="spacer" nodes={entries(HERE)} />
+    </Page>
   );
 }
