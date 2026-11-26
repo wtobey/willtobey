@@ -52,3 +52,18 @@ a:focus-visible {
   color: var(--bg);
   outline: none;
 }
+
+/* Prose. 72 columns is a readable line in a monospace face. */
+article {
+  max-width: 72ch;
+}
+
+article > * + * {
+  margin-block-start: 1.5em;
+}
+
+h1 {
+  font-size: inherit;
+  font-weight: inherit;
+  margin: 0;
+}
