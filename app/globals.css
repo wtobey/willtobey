@@ -72,8 +72,10 @@ img {
   height: auto;
 }
 
+/* Titles keep the body size, because a terminal has one size. Weight is the
+   emphasis a terminal does have, so that is what marks the title. */
 h1 {
   font-size: inherit;
-  font-weight: inherit;
+  font-weight: bold;
   margin: 0;
 }
