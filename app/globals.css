@@ -62,11 +62,13 @@ article > * + * {
   margin-block-start: 1.5em;
 }
 
-/* Photos never outgrow their column, and never upscale past their own
-   pixels, which keeps them sharp against a flat background. */
+/* Photos sit in a column of their own, 600px rather than the 72ch of the
+   prose. The round number is the point: it makes the sizes hint on each
+   image exact, so a dense screen asks for 1200px and gets a file that
+   exists, instead of rounding up to the 1920px one. */
 img {
   display: block;
-  max-width: 100%;
+  max-width: min(100%, 600px);
   height: auto;
 }
 
