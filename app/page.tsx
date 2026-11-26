@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { POSTS } from "./posts";
+import { PROJECTS } from "./projects";
 
 export default function Home() {
   return (
@@ -23,6 +24,31 @@ export default function Home() {
                 );
               })}
             </ul>
+          </li>
+        </ul>
+      </nav>
+      <nav aria-label="Woodworking" className="spacer">
+        <ul>
+          <li>
+            <span aria-hidden="true">{"\u251c\u2500\u2500 "}</span>
+            <Link href="/woodworking">woodworking</Link>
+            {PROJECTS.length > 0 && (
+              <ul>
+                {PROJECTS.map((project, i) => {
+                  const last = i === PROJECTS.length - 1;
+                  return (
+                    <li key={project.slug}>
+                      <span aria-hidden="true">
+                        {last ? "\u2502   \u2514\u2500\u2500 " : "\u2502   \u251c\u2500\u2500 "}
+                      </span>
+                      <Link href={`/woodworking/${project.slug}`}>
+                        {project.title}
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            )}
           </li>
         </ul>
       </nav>
