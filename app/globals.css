@@ -25,3 +25,30 @@ body {
 p {
   margin: 0;
 }
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* The box-drawing prefixes line up only if their spaces survive. */
+[aria-hidden="true"] {
+  white-space: pre;
+}
+
+/* One blank terminal line. line-height is 1.5, so 1.5em is one row. */
+.spacer {
+  margin-block-start: 1.5em;
+}
+
+a {
+  color: inherit;
+}
+
+a:hover,
+a:focus-visible {
+  background: var(--fg);
+  color: var(--bg);
+  outline: none;
+}
