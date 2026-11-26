@@ -7,6 +7,10 @@ export type Post = {
 
 export const POSTS: Post[] = [
   {
+    slug: "what-i-like-about-cad",
+    title: "what i like about cad",
+  },
+  {
     slug: "spaghetti-all-the-way-down",
     title: "spaghetti all the way down",
   },
